@@ -1,0 +1,47 @@
+/* .article-header {
+    background-color: rgb(109, 11, 2019, 218);
+    color: white;
+    border: 3px solid transparent;
+} */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    font-family: sans-serif;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 18px 18px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+
+ .section-content {
+    margin-left: 110px;
+    margin-right: 10%;
+    margin-top: 10px;
+} 
+
+input[type=button] {
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+
+.button{
+  border-radius: 5px;
+  background-color: rgb(127, 219, 132);
+  }
