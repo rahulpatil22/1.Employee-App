@@ -25,23 +25,41 @@ ul {
     text-decoration: none;
   }
   
-  li a:hover {
-    background-color: #111;
-  }
+  /* li a:hover {
+    background-color: rgb(64, 228, 94);
+  } */
 
  .section-content {
-    margin-left: 110px;
-    margin-right: 10%;
-    margin-top: 10px;
+    
+    
 } 
 
 input[type=button] {
-  margin-top: 10px;
-  margin-left: 25px;
+  
+  /* margin-top: 10px; */
+  /* margin-left: 25px; */
 }
 
 
-.button{
-  border-radius: 5px;
-  background-color: rgb(127, 219, 132);
-  }
+.main{
+    /* Add the blur effect */
+    /* filter: blur(8px);
+    -webkit-filter: blur(8px);
+     */
+    /* Full height */
+    /* height: 100%;  */
+    
+    /* Center and scale the image nicely */
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+.title{
+  font-size: 25px;
+  color: white;
+  margin-left: 420%;
+  width: 150%;
+  margin-top: -5%;
+  text-align: center;
+}

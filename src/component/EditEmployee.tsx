@@ -1,21 +1,22 @@
-import { useState } from "react";
-import { IEmployee } from "./Employee.type";
-import "./EmployeeForm.style.css";
-
+import React, { useState } from 'react';
+import './AddEmployee.style.css';
+import { IEmployee } from './Employee.type';
+import { useSelector, useDispatch } from 'react-redux';
+import { EmpState } from './../component/redux/empReducer';
 type Props = {
-  data: IEmployee;
   onBackBtnClickHnd: () => void;
   onUpdateClickHnd: (data: IEmployee) => void;
 };
 
 const EditEmployee = (props: Props) => {
-  const { data, onBackBtnClickHnd, onUpdateClickHnd } = props;
-
-  const [firstName, setFirstName] = useState(data.firstName);
-  const [lastName, setLastName] = useState(data.lastName);
-  const [email, setEmail] = useState(data.email);
-  const [designation, setDesignation] = useState(data.designation);
-
+  const data = useSelector<EmpState, EmpState['editEmp']>(
+    (state) => state.editEmp
+  );
+  const { onBackBtnClickHnd, onUpdateClickHnd } = props;
+  const [firstName, setFirstName] = useState(data?.firstName);
+  const [lastName, setLastName] = useState(data?.lastName);
+  const [email, setEmail] = useState(data?.email);
+  const [designation, setDesignation] = useState(data?.designation);
   const onFirstNameChangeHnd = (e: any) => {
     setFirstName(e.target.value);
   };
@@ -27,7 +28,8 @@ const EditEmployee = (props: Props) => {
   const onEmailChangeHnd = (e: any) => {
     setEmail(e.target.value);
   };
-  const onDesignationChangeHnd = (e: any) => {
+
+  const OnDesignationChangeHnd = (e: any) => {
     setDesignation(e.target.value);
   };
 
@@ -38,41 +40,84 @@ const EditEmployee = (props: Props) => {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      designation:designation
+      designation: designation,
     };
     onUpdateClickHnd(updatedData);
     onBackBtnClickHnd();
   };
-
   return (
-    <div className="form-container">
+    <div className="container">
       <div>
-        <h3>Add Employee Form</h3>
+        <h3 style={{ textAlign: 'center' }}>Edit Employee Form</h3>
       </div>
       <form onSubmit={onSubmitBtnClickHnd}>
         <div>
-          <label>First Name : </label>
+          <div style={{ float: 'left', width: '30%' }}>
+            <label>First Name: </label>
+          </div>
+          <div style={{ float: 'left', width: '70%' }}>
+            <input
+              type="text"
+              value={firstName}
+              onChange={onFirstNameChangeHnd}
+              pattern="[A-Za-z]+"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <div style={{ float: 'left', width: '30%' }}>
+            <label>Last Name: </label>
+          </div>
+          <div style={{ float: 'left', width: '70%' }}>
+            <input
+              type="text"
+              value={lastName}
+              onChange={onLastNameChangeHnd}
+              pattern="[A-Za-z]+"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <div style={{ float: 'left', width: '30%' }}>
+            <label>Email: </label>
+          </div>
+          <div style={{ float: 'left', width: '60%' }}>
+            <input
+              type="text"
+              value={email}
+              onChange={onEmailChangeHnd}
+              required
+              pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+            />
+          </div>
+        </div>
+        <div>
+          <div style={{ float: 'left', width: '30%' }}>
+            <label>Designation: </label>
+          </div>
+          <div style={{ float: 'left', width: '60%' }}>
+            <input
+              type="text"
+              value={designation}
+              onChange={OnDesignationChangeHnd}
+              required
+            />
+          </div>
+        </div>
+        <div className="button-container">
           <input
-            type="text"
-            value={firstName}
-            onChange={onFirstNameChangeHnd}
+            type="button"
+            className="card-button"
+            value="Back"
+            onClick={onBackBtnClickHnd}
           />
-        </div>
-        <div>
-          <label>Last Name : </label>
-          <input type="text" value={lastName} onChange={onLastNameChangeHnd} />
-        </div>
-        <div>
-          <label>Email Add  : </label>
-          <input type="text" value={email} onChange={onEmailChangeHnd} />
-        </div>
-        <div>
-          <label>Designation : </label>
-          <input type="text" value={designation} onChange={onDesignationChangeHnd} />
-        </div>
-        <div>
-          <input type="button" value="Back" onClick={onBackBtnClickHnd} />
-          <input type="submit" value="Update Employee" />
+          <input
+            type="submit"
+            className="card-button"
+            value="Update Employee"
+          />
         </div>
       </form>
     </div>

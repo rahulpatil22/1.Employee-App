@@ -1,98 +1,86 @@
-import React, { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
-import AddEmployee from "./AddEmployee";
-import EditEmployee from "./EditEmployee";
-import { IEmployee, PageEnum } from "./Employee.type";
-import EmployeeList from "./EmployeeList";
-import "./Home.style.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import AddEmployee from './AddEmployee';
+import { IEmployee, PageEnum } from './Employee.type';
+import EmployeeList from './EmployeeList';
+import './Home.style.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { EmpState } from './../component/redux/empReducer';
+import Header from './Header';
+import EditEmployee from './EditEmployee';
+import { url } from 'inspector';
+import Navbar from './Navbar';
+import background from '../employee.jpg';
 
 const Home = () => {
-  const [employeeList, setEmployeeList] = useState( [] as IEmployee[]);
-  const [shownPage, setShownPage] = useState(PageEnum.list);
-  const [dataToEdit, setDataToEdit] = useState({} as  IEmployee);
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-   const listInString= window.localStorage.getItem("EmployeeList")
-   if(listInString){
-    _setEmployeeList(JSON.parse(listInString))
-   }
-  },[]);
-
-  const onAddEmployeeClickHnd = () => {
-    setShownPage(PageEnum.add);
-  };
+  const employeeList = useSelector<
+    EmpState,
+    EmpState['employeeList']
+  >((state) => state.employeeList);
+  const shownPage = useSelector<EmpState, EmpState['shownPage']>(
+    (state) => state.shownPage
+  );
 
   const showListPage = () => {
-    setShownPage(PageEnum.list);
+    dispatch({ type: 'ADD_EMP_CLICK', payload: PageEnum.list });
+    dispatch({ type: 'EDIT_EMP', payload: null });
   };
-  const _setEmployeeList = (list:IEmployee[]) =>{
-    setEmployeeList(list);
-    window.localStorage.setItem("EmployeeList",JSON.stringify(list));
-
-  }
 
   //Add
   const addEmployeeHnd = (data: IEmployee) => {
-   _setEmployeeList([...employeeList, data]);
+    dispatch({ type: 'ADD_EMP', payload: data });
+    dispatch({ type: 'ADD_EMP_CLICK', payload: PageEnum.list });
   };
 
   //Delete
   const deleteEmployee = (data: IEmployee) => {
     const indexToDelete = employeeList.indexOf(data);
     const tempList = [...employeeList];
-
     tempList.splice(indexToDelete, 1);
-    _setEmployeeList(tempList);
+    dispatch({ type: 'UPDATE_EMP', payload: tempList });
   };
-  const editEmployeeData=(data:IEmployee)=>{
-    setShownPage(PageEnum.edit);
-    setDataToEdit(data)
+
+  const editEmployeeData = (data: IEmployee) => {
+    dispatch({ type: 'ADD_EMP_CLICK', payload: PageEnum.edit });
+    dispatch({ type: 'EDIT_EMP', payload: data });
   };
-  const updateData=(data:IEmployee)=>{
-    const filteredData= employeeList.filter(x => x.id === data.id)[0];
-    const indexOfRecord= employeeList.indexOf(filteredData);
-    const tempData = [...employeeList]
-    tempData[indexOfRecord]=data;
-    _setEmployeeList(tempData)
-  }
+
+  const updateData = (data: IEmployee) => {
+    const filteredData = employeeList.filter(
+      (x) => x.id === data.id
+    )[0];
+    const indexOfRecord = employeeList.indexOf(filteredData);
+    const tempData = [...employeeList];
+    tempData[indexOfRecord] = data;
+    dispatch({ type: 'UPDATE_EMP', payload: tempData });
+    dispatch({ type: 'ADD_EMP_CLICK', payload: PageEnum.list });
+    dispatch({ type: 'EDIT_EMP', payload: null });
+  };
+
   return (
-    <div
-      style={{
-        backgroundColor:"skyblue"
-          ,
-        height: "100vh",
-        // marginTop: "-70px",
-        // fontSize: "50px",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className="main">
+      <div></div>
       {/* Header section */}
-      <ul>
-        <li>
-          <Link to="/"></Link>
-        </li>
-      </ul>
+      <Navbar />
 
       {/* Actual content */}
       <section className="section-content">
         {shownPage === PageEnum.list && (
-          <>
-            <div>
-              <input
-                style={{ float: "right", clear: "both" }}
-                type="button"
-                value="Add Employee"
-                className="button"
-                onClick={onAddEmployeeClickHnd}
+          <div style={{ flexDirection: 'column' }}>
+            {employeeList.length > 0 ? (
+              <EmployeeList
+                list={employeeList}
+                onDeleteClickHnd={deleteEmployee}
+                onEdit={editEmployeeData}
               />
-            </div>
-            <EmployeeList
-              list={employeeList}
-              onDeleteClickHnd={deleteEmployee}
-              onEdit={editEmployeeData}
-            />
-          </>
+            ) : (
+              <div>
+                <h3 style={{ color: 'white' }}>No Data Found!</h3>
+              </div>
+            )}
+          </div>
         )}
 
         {shownPage === PageEnum.add && (
@@ -101,7 +89,13 @@ const Home = () => {
             onSubmitClickHnd={addEmployeeHnd}
           />
         )}
-        {shownPage === PageEnum.edit&&<EditEmployee data={dataToEdit} onBackBtnClickHnd={showListPage} onUpdateClickHnd={updateData}/>}
+
+        {shownPage === PageEnum.edit && (
+          <EditEmployee
+            onBackBtnClickHnd={showListPage}
+            onUpdateClickHnd={updateData}
+          />
+        )}
       </section>
     </div>
   );

@@ -8,47 +8,78 @@ input[type="text"] {
   margin: 5px;
 }
 
-input[type="email"] {
-  height: 20px;
-  padding-left: 15px;
-  margin: 5px;
-}
-
-input[type="button"],
+/* input[type="button"],
 input[type="submit"] {
   height: 25px;
   margin-left: 5px;
   margin-top: 10px;
+} */
+.card-button {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset, rgb(44 187 99 / 15%) 0 1px 2px, rgb(44 187 99 / 15%) 0 2px 4px, rgb(44 187 99 / 15%) 0 4px 8px, rgb(44 187 99 / 15%) 0 8px 16px, rgb(44 187 99 / 15%) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 10px;
+}
+
+.card-button:hover {
+  box-shadow: rgb(44 187 99 / 35%) 0 -25px 18px -14px inset, rgb(44 187 99 / 25%) 0 1px 2px, rgb(44 187 99 / 25%) 0 2px 4px, rgb(44 187 99 / 25%) 0 4px 8px, rgb(44 187 99 / 25%) 0 8px 16px, rgb(44 187 99 / 25%) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
 }
 
 .container {
-  background-color: rgb(255, 255, 255);
+  display: flex;
   width: 30%;
   margin: 20px auto;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
+   
+  /* justify-content: center; */
+  /* align-items: center; */
   border-radius: 10px;
   /* height: 600px; */
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+  padding: 15px;
+  transition: all 0.3s ease-out;
+  background-color: white
+}
+
+ 
+
+.container:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .lableWraper {
-    float: "left";
-    width: "30%";
+  float: "left";
+  width: "30%";
 }
 
 .inputWraper {
-    float: "left"; 
-    width: "60%";
+  float: "left";
+  width: "60%";
 }
 
-
-.button{
+.button {
   border-radius: 5px;
   background-color: rgb(127, 219, 132);
-  }
-
-.button-view{
-  margin-left: 50%;
 }
 
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import "./AddEmployee.style.css";
-import { IEmployee } from "./Employee.type";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import './AddEmployee.style.css';
+import { IEmployee } from './Employee.type';
+import Navbar from './Navbar';
 
 type Props = {
   onBackBtnClickHnd: () => void;
@@ -8,10 +11,13 @@ type Props = {
 };
 
 const AddEmployee = (props: Props) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [designation, setDesignation] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [designation, setDesignation] = useState('');
+  let navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const { onBackBtnClickHnd, onSubmitClickHnd } = props;
 
@@ -40,72 +46,94 @@ const AddEmployee = (props: Props) => {
       email: email,
       designation: designation,
     };
-    onSubmitClickHnd(data);
-    onBackBtnClickHnd();
+    // onSubmitClickHnd(data);
+    dispatch({ type: 'ADD_EMP', payload: data });
+    onBack();
+    // onBackBtnClickHnd();
+  };
+
+  const onBack = () => {
+    navigate('/');
   };
   return (
-    <div className="container">
-      <div>
-        <h3 style={{ textAlign: "center" }}>Add Employee</h3>
-        <hr></hr>
+    <>
+      <div className="container">
+        <div>
+          <h3 style={{ textAlign: 'center' }}>Add Employee </h3>
+        </div>
+        <form onSubmit={onSubmitBtnClickHnd}>
+          <div>
+            <div style={{ float: 'left', width: '30%' }}>
+              <label>First Name: </label>
+            </div>
+            <div style={{ float: 'left', width: '70%' }}>
+              <input
+                type="text"
+                value={firstName}
+                onChange={onFirstNameChangeHnd}
+                pattern="[A-Za-z]+"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <div style={{ float: 'left', width: '30%' }}>
+              <label>Last Name: </label>
+            </div>
+            <div style={{ float: 'left', width: '70%' }}>
+              <input
+                type="text"
+                value={lastName}
+                onChange={onLastNameChangeHnd}
+                pattern="[A-Za-z]+"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <div style={{ float: 'left', width: '30%' }}>
+              <label>Email: </label>
+            </div>
+            <div style={{ float: 'left', width: '60%' }}>
+              <input
+                type="text"
+                value={email}
+                onChange={onEmailChangeHnd}
+                required
+                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+              />
+            </div>
+          </div>
+          <div>
+            <div style={{ float: 'left', width: '30%' }}>
+              <label>Designation: </label>
+            </div>
+            <div style={{ float: 'left', width: '60%' }}>
+              <input
+                type="text"
+                value={designation}
+                onChange={OnDesignationChangeHnd}
+                required
+              />
+            </div>
+          </div>{' '}
+          <br />
+          <div className="button-container">
+            <input
+              type="button"
+              className="card-button"
+              value="Back"
+              onClick={onBack}
+            />
+            <input
+              type="submit"
+              className="card-button"
+              value="Submit"
+            />
+          </div>
+        </form>
       </div>
-      <form onSubmit={onSubmitBtnClickHnd}>
-        <div>
-          <div style={{ float: "left", width: "30%" }}>
-            <label>First Name: </label>
-          </div>
-          <div style={{ float: "left", width: "70%" }}>
-            <input
-              type="text"
-              value={firstName}
-              onChange={onFirstNameChangeHnd}
-              pattern="[A-Za-z]+"
-              required
-            />
-          </div>
-        </div>
-        <div>
-          <div style={{ float: "left", width: "30%" }}>
-            <label>Last Name: </label>
-          </div>
-          <div style={{ float: "left", width: "70%" }}>
-            <input
-              type="text"
-              value={lastName}
-              onChange={onLastNameChangeHnd}
-              pattern="[A-Za-z]+"
-              required
-            />
-          </div>
-        </div>
-        <div>
-          <div style={{ float: "left", width: "30%"}}>
-            <label>Email:</label>
-          </div>
-          <div style={{ float: "left", width: "60%"}}>
-            <input type="email" value={email} onChange={onEmailChangeHnd} required/>
-          </div>
-        </div>
-        <div>
-          <div style={{ float: "left", width: "30%" }}>
-            <label>Designation: </label>
-          </div>
-          <div style={{ float: "left", width: "60%" }}>
-            <input
-              type="text"
-              value={designation}
-              onChange={OnDesignationChangeHnd}
-              pattern="[A-Za-z]+"
-              required
-            />
-          </div>
-        </div>
-        <div className="button-view">
-          <input type="button" className="button" value="Back" onClick={onBackBtnClickHnd} />
-          <input type="submit"  className="button" value="Add Employee" />
-        </div>
-      </form>
-    </div>
+    </>
   );
 };
 
