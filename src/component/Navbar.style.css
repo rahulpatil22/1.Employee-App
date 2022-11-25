@@ -8,18 +8,19 @@
   border: 2px solid rgb(200, 200, 212);
   color: white;
   text-decoration: none;
-  justify-content: space-between;
+  justify-content: flex-end;
   position: sticky;
   top: 0;
   margin: auto;
   z-index: 55;
-}
-
-.navlink-title{
 
 }
 
-.navlink-button {
+/* .navlink-title{
+
+} */
+
+/* .navlink-button {
     background-color: #c2fbd7;
     border-radius: 100px;
     box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset, rgb(44 187 99 / 15%) 0 1px 2px, rgb(44 187 99 / 15%) 0 2px 4px, rgb(44 187 99 / 15%) 0 4px 8px, rgb(44 187 99 / 15%) 0 8px 16px, rgb(44 187 99 / 15%) 0 16px 32px;
@@ -38,15 +39,25 @@
     touch-action: manipulation;
     margin-right: 30px;
 text-decoration: none;
-  }
+  } */
   
-  .navlink-button:hover {
+  /* .navlink-button:hover {
     box-shadow: rgb(44 187 99 / 35%) 0 -25px 18px -14px inset, rgb(44 187 99 / 25%) 0 1px 2px, rgb(44 187 99 / 25%) 0 2px 4px, rgb(44 187 99 / 25%) 0 4px 8px, rgb(44 187 99 / 25%) 0 8px 16px, rgb(44 187 99 / 25%) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
-  }
+  } */
 
   .dashboard-title{
     font-weight: 700;
     font-size: x-large;
     color: black;
   }
+  .link{
+    font-family: sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    margin-right:"1200px";
+}
+.navbar-dashboard-title{
+  margin-right: 1260px;
+}

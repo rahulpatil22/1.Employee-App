@@ -61,8 +61,8 @@ const Home = () => {
 
   return (
     <div className="main">
-      <div></div>
-      {/* Header section */}
+    
+      {/* <Header title="Dashbaord" /> */}
       <Navbar />
 
       {/* Actual content */}

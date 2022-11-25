@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { EmpState } from './../component/redux/empReducer';
 import { PageEnum } from './Employee.type';
 
-const Header = () => {
+type Props={
+  title:string
+}
+const Header = (props:Props) => {
+  const {title}=props
   const shownPage = useSelector<EmpState, EmpState['shownPage']>(
     (state) => state.shownPage
   );
@@ -20,7 +24,7 @@ const Header = () => {
         <div style={{ display: 'table-cell' }}>
           <li>
             <Link to="/"></Link>
-            <p className="title">Home Page</p>
+            <p className="title" >{props.title }</p>
 
             {/* <input
             style={{

@@ -38,7 +38,9 @@ input[type="submit"] {
   box-shadow: rgb(44 187 99 / 35%) 0 -25px 18px -14px inset, rgb(44 187 99 / 25%) 0 1px 2px, rgb(44 187 99 / 25%) 0 2px 4px, rgb(44 187 99 / 25%) 0 4px 8px, rgb(44 187 99 / 25%) 0 8px 16px, rgb(44 187 99 / 25%) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
 }
-
+/* .header-text{
+  margin-left: 500px;
+} */
 .container {
   display: flex;
   width: 30%;
@@ -82,4 +84,18 @@ input[type="submit"] {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+}
+
+
+.title{
+  font-size: 25px;
+  color: white;
+  margin-left: 550%;
+  width: 150%;
+  margin-top: -5%;
+  text-align: center;
+}
+.employeepage{
+  text-align: center;
+  margin-right: 30px;
 }

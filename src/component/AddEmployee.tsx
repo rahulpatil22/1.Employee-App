@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './AddEmployee.style.css';
 import { IEmployee } from './Employee.type';
 import Navbar from './Navbar';
+import Header from "./Header";
 
 type Props = {
   onBackBtnClickHnd: () => void;
@@ -57,9 +58,11 @@ const AddEmployee = (props: Props) => {
   };
   return (
     <>
+   {/* <div className='employeepage'><Header title=''  /></div>  */}
+    <Navbar />
       <div className="container">
-        <div>
-          <h3 style={{ textAlign: 'center' }}>Add Employee </h3>
+        <div><h3 style={{ textAlign: 'center' }}>Add Employee </h3>
+          
         </div>
         <form onSubmit={onSubmitBtnClickHnd}>
           <div>
@@ -72,7 +75,7 @@ const AddEmployee = (props: Props) => {
                 value={firstName}
                 onChange={onFirstNameChangeHnd}
                 pattern="[A-Za-z]+"
-                required
+                required title="Must contain alphabets only, numbers not allowed"
               />
             </div>
           </div>
@@ -86,7 +89,7 @@ const AddEmployee = (props: Props) => {
                 value={lastName}
                 onChange={onLastNameChangeHnd}
                 pattern="[A-Za-z]+"
-                required
+                required title="Must contain alphabets only, numbers not allowed"
               />
             </div>
           </div>
@@ -100,7 +103,7 @@ const AddEmployee = (props: Props) => {
                 value={email}
                 onChange={onEmailChangeHnd}
                 required
-                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" title="Must contain alphabets followed by @ and ."
               />
             </div>
           </div>
@@ -113,7 +116,7 @@ const AddEmployee = (props: Props) => {
                 type="text"
                 value={designation}
                 onChange={OnDesignationChangeHnd}
-                required
+                required      title="Must contain alphabets "
               />
             </div>
           </div>{' '}
@@ -132,6 +135,7 @@ const AddEmployee = (props: Props) => {
             />
           </div>
         </form>
+     
       </div>
     </>
   );
