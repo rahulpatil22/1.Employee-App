@@ -1,9 +1,3 @@
-/* .article-header {
-    background-color: rgb(109, 11, 2019, 218);
-    color: white;
-    border: 3px solid transparent;
-} */
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -25,35 +19,12 @@ ul {
     text-decoration: none;
   }
   
-  /* li a:hover {
-    background-color: rgb(64, 228, 94);
-  } */
-
- .section-content {
-    
-    
-} 
-
-input[type=button] {
-  
-  /* margin-top: 10px; */
-  /* margin-left: 25px; */
-}
+ 
 
 
-.main{
-    /* Add the blur effect */
-    /* filter: blur(8px);
-    -webkit-filter: blur(8px);
-     */
-    /* Full height */
-    /* height: 100%;  */
-    
-    /* Center and scale the image nicely */
-    /* background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
-}
+
+
+
 
 .title{
   font-size: 25px;
