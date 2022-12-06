@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './AddEmployee.style.css';
-import { IEmployee } from './Employee.type';
+import '../AddEmployee/AddEmployee'
+import { IEmployee } from '../EmployeeType/Employee.type';
 import { useSelector, useDispatch } from 'react-redux';
-import { EmpState } from './../component/redux/empReducer';
+import { EmpState } from '../redux/empReducer';
 type Props = {
   onBackBtnClickHnd: () => void;
   onUpdateClickHnd: (data: IEmployee) => void;
@@ -41,6 +41,7 @@ const EditEmployee = (props: Props) => {
       lastName: lastName,
       email: email,
       designation: designation,
+      
     };
     onUpdateClickHnd(updatedData);
     onBackBtnClickHnd();

@@ -1,27 +1,37 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import "./AddEmployee.style.css";
-import { IEmployee } from "./Employee.type";
-import Navbar from "./Navbar";
-import Header from "./Header";
-
+import React, { useState, useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import './AddEmployee.style.css';
+import { IEmployee, contractualEmployee } from '../EmployeeType/Employee.type';
+import Navbar from '../NavBar/Navbar';
+import { TodoContext } from '../../ContractualEmp/NewContractEmployee/TodoProvider';
+import {
+  TodoContextType,
+  ITodo,
+} from '../../ContractualEmp/NewContractEmployee/contractEmployeeTypes';
 type Props = {
   onBackBtnClickHnd: () => void;
   onSubmitClickHnd: (data: IEmployee) => void;
 };
 
 const AddEmployee = (props: Props) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [designation, setDesignation] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [designation, setDesignation] = useState('');
   let navigate = useNavigate();
 
   const dispatch = useDispatch();
-
+  // const ok1 = React.useContext(TodoContext) as TodoContextType;
+  // console.log(ok1, 'todos1');
+  const { todos } = useContext(TodoContext) as TodoContextType;
+  console.log(todos, 'todos from Add Employee');
   const { onBackBtnClickHnd, onSubmitClickHnd } = props;
 
+  // var contextData = React.useContext(TodoContext) as TodoContextType;
+
+  // const userContext = useContext(UserContext);
+  // console.log(userContext, 'userContext');
   const onFirstNameChangeHnd = (e: any) => {
     setFirstName(e.target.value);
   };
@@ -47,28 +57,47 @@ const AddEmployee = (props: Props) => {
       email: email,
       designation: designation,
     };
+    console.log(firstName, 'ee1');
     // onSubmitClickHnd(data);
-    dispatch({ type: "ADD_EMP", payload: data });
+    dispatch({ type: 'ADD_EMP', payload: data });
     onBack();
     // onBackBtnClickHnd();
   };
 
-  const onBack = () => {
-    navigate("/");
+  const submitContractualEmployee = (e: any) => {
+    e.preventDefault();
+    const data: IEmployee = {
+      id: new Date().toJSON().toString(),
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      designation: designation,
+    };
+    console.log(firstName, 'ee1', data);
+
+    const onBack = () => {
+      navigate('/contractEmployeeList');
+    };
   };
+
+  const onBack = () => {
+    navigate('/');
+  };
+ 
   return (
     <>
+      <div className="employeepage"></div>
       <Navbar />
       <div className="container">
-        <div className="employee">
-          <h3 >Add Employee </h3>
+        <div>
+          <h3 className='add'>Add Employee </h3>
         </div>
         <form onSubmit={onSubmitBtnClickHnd}>
           <div>
-            <div style={{ float: "left", width: "30%" }}>
+            <div className='first'>
               <label>First Name: </label>
             </div>
-            <div style={{ float: "left", width: "70%" }}>
+            <div className='inputfirst' > 
               <input
                 type="text"
                 value={firstName}
@@ -80,10 +109,10 @@ const AddEmployee = (props: Props) => {
             </div>
           </div>
           <div>
-            <div style={{ float: "left", width: "30%" }}>
+            <div className='last'>
               <label>Last Name: </label>
             </div>
-            <div style={{ float: "left", width: "70%" }}>
+            <div className='inputlast'>
               <input
                 type="text"
                 value={lastName}
@@ -95,10 +124,10 @@ const AddEmployee = (props: Props) => {
             </div>
           </div>
           <div>
-            <div style={{ float: "left", width: "30%" }}>
+            <div className='email'>
               <label>Email: </label>
             </div>
-            <div style={{ float: "left", width: "60%" }}>
+            <div className='inputemail'>
               <input
                 type="text"
                 value={email}
@@ -110,10 +139,10 @@ const AddEmployee = (props: Props) => {
             </div>
           </div>
           <div>
-            <div style={{ float: "left", width: "30%" }}>
+            <div className='designation'>
               <label>Designation: </label>
             </div>
-            <div style={{ float: "left", width: "60%" }}>
+            <div className='inputdesignation'>
               <input
                 type="text"
                 value={designation}
@@ -122,7 +151,7 @@ const AddEmployee = (props: Props) => {
                 title="Must contain alphabets "
               />
             </div>
-          </div>{" "}
+          </div>{' '}
           <br />
           <div className="button-container">
             <input
@@ -131,8 +160,16 @@ const AddEmployee = (props: Props) => {
               value="Back"
               onClick={onBack}
             />
-            <input type="submit" className="card-button" value="Permanant Employee" />
-            <input type="submit" className="card-button" value="Contractual Employee" />
+            <input
+              type="submit"
+              className="card-button"
+              value="Permanant Employee"
+            />
+            <input
+              className="card-button"
+              value="Contractual Employee"
+              onClick={submitContractualEmployee}
+            />
           </div>
         </form>
       </div>

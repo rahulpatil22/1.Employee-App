@@ -1,4 +1,4 @@
-import { IEmployee, PageEnum } from "./../Employee.type";
+import { IEmployee, PageEnum } from "../EmployeeType/Employee.type";
 
 
 export interface EmpState {

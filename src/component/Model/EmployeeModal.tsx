@@ -1,4 +1,4 @@
-import { IEmployee } from "./Employee.type";
+import { IEmployee } from "../EmployeeType/Employee.type";
 import "./EmployeeModel.style.css";
 
 type Props = {

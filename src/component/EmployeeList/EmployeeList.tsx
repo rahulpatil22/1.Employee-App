@@ -1,7 +1,7 @@
-import { IEmployee } from "./Employee.type";
+import { IEmployee } from "../EmployeeType/Employee.type";
 import "./EmployeeList.style.css";
 import React, { useState } from "react";
-import EmployeeModal from "./EmployeeModal";
+import EmployeeModal from "../Model/EmployeeModal";
 
 type Props = {
   list: IEmployee[];
@@ -29,6 +29,7 @@ const EmployeeList = (props: Props) => {
               <div className="row">
                 <div className="card green">
                   <div className="card-info-container">
+                 
                     <div className="card-title">
                       {"First Name : " + employee.firstName}
                     </div>

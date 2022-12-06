@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { ContractualContext } from './contractualcontext';
-import { ContractualEmpContextType, IEmployee } from './contractual.type';
-import AddEmployee from '../component/AddEmployee';
+// import { ContractualContext } from './contractualcontext';
+import {
+  ContractualEmpContextType,
+  IEmployee,
+} from './contractual.type';
+// import AddEmployee from '../component/AddEmployee';
 
-const AddTodo: React.FC = () => {
-  const { saveEmployee } = React.useContext(ContractualContext) as ContractualEmpContextType;
+const AddEmployee: React.FC = () => {
+  // const { saveEmployee } = React.useContext(ContractualContext) as ContractualEmpContextType;
   const [formData, setFormData] = React.useState<IEmployee | {}>();
   const handleForm = (e: React.FormEvent<HTMLInputElement>): void => {
     setFormData({
@@ -12,12 +15,18 @@ const AddTodo: React.FC = () => {
       [e.currentTarget.id]: e.currentTarget.value,
     });
   };
-  const handleSaveEmployee = (e: React.FormEvent, formData: IEmployee | any) => {
+  const handleSaveEmployee = (
+    e: React.FormEvent,
+    formData: IEmployee | any
+  ) => {
     e.preventDefault();
-    saveEmployee(formData);
+    // saveEmployee(formData);
   };
   return (
-    <form className="Form" onSubmit={(e) => handleSaveEmployee(e, formData)}>
+    <form
+      className="Form"
+      onSubmit={(e) => handleSaveEmployee(e, formData)}
+    >
       <div>
         <div>
           <label htmlFor="firstname">FirstName</label>
@@ -36,7 +45,9 @@ const AddTodo: React.FC = () => {
           <input onChange={handleForm} type="text" id="designation" />
         </div>
       </div>
-      <button disabled={formData === undefined ? true : false}>Add Employee</button>
+      <button disabled={formData === undefined ? true : false}>
+        Add Employee
+      </button>
     </form>
   );
 };

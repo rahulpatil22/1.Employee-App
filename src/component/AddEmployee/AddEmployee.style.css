@@ -44,10 +44,42 @@ input[type="text"] {
   box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
   padding: 15px;
   transition: all 0.3s ease-out;
-  background-color: white
+  background-color: white;
+  text-align: center;
 }
+.first{
+  float: left;
+  width: 30%;
+}
+.inputfirst{
+float: left;
+width: 70%;
 
- 
+}
+.last{
+  float:left;
+  width:30%;
+}
+.inputlast{
+  float: left;
+  width: 70%;
+}
+.email{
+  float:left;
+  width:30%;
+}
+.inputemail{
+  float:left;
+  width:60%;
+}
+.designation{
+  float:left;
+  width:30%;
+}
+.inputdesignation{
+  float:left;
+  width:60%;
+}
 
 .container:hover {
   transform: translateY(-5px);
