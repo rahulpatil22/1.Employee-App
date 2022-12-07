@@ -1,7 +1,7 @@
-import { IEmployee } from "../EmployeeType/Employee.type";
+import { IEmployee } from "../Type/Employee.type";
 import "./EmployeeList.style.css";
 import React, { useState } from "react";
-import EmployeeModal from "../Model/EmployeeModal";
+import EmployeeModal from "../ModelEmployee/EmployeeModal";
 
 type Props = {
   list: IEmployee[];

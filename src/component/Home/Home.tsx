@@ -1,26 +1,17 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddEmployee from '../AddEmployee/AddEmployee';
-import {
-  IEmployee,
-  PageEnum,
-  contractualEmployee,
-  TodoContextType,
-} from '../EmployeeType/Employee.type';
+import { IEmployee, PageEnum } from '../Type/Employee.type';
 import EmployeeList from '../EmployeeList/EmployeeList';
 import './Home.style.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { EmpState } from '../redux/empReducer';
-// import Header from '../Header';
+
 import EditEmployee from '../EditEmployee/EditEmployee';
 import { url } from 'inspector';
 import Navbar from '../NavBar/Navbar';
 import background from '../employee.jpg';
-import TodoProvider from '../../ContractualEmp/NewContractEmployee/TodoProvider';
 
-export const TodoContext = createContext<TodoContextType | null>(
-  null
-);
 const Home = () => {
   const dispatch = useDispatch();
 
@@ -31,13 +22,6 @@ const Home = () => {
   const shownPage = useSelector<EmpState, EmpState['shownPage']>(
     (state) => state.shownPage
   );
-
-  const [todos, setTodos] = React.useState<contractualEmployee[]>([
-    {
-      name: 'string',
-      age: 10,
-    },
-  ]);
 
   const showListPage = () => {
     dispatch({ type: 'ADD_EMP_CLICK', payload: PageEnum.list });
@@ -75,18 +59,9 @@ const Home = () => {
     dispatch({ type: 'EDIT_EMP', payload: null });
   };
 
-  /////////
-
-  const saveTodo = (todo: contractualEmployee) => {
-    const newTodo: contractualEmployee = {
-      name: 'string',
-      age: 10,
-    };
-    setTodos([...todos, newTodo]);
-  };
-
   return (
     <div className="main">
+    
       {/* <Header title="Dashbaord" /> */}
       <Navbar />
 
