@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: skyblue; */
-  background-image: url("https://img.freepik.com/free-photo/hand-painted-watercolor-background-with-sky-clouds-shape_24972-1095.jpg?w=1380&t=st=1669227356~exp=1669227956~hmac=540cdc93485f6c37289d0c687a50572727e1691487bbd0b6c1192a281c4b4bac");
+  background-color: rgb(197, 229, 241);
+  /* background-image: url("https://img.freepik.com/free-photo/hand-painted-watercolor-background-with-sky-clouds-shape_24972-1095.jpg?w=1380&t=st=1669227356~exp=1669227956~hmac=540cdc93485f6c37289d0c687a50572727e1691487bbd0b6c1192a281c4b4bac"); */
 
     /* background-position: center; */
     background-repeat: no-repeat;
