@@ -4,18 +4,18 @@ describe("add user redux", () => {
   const mockStore = configureStore();
   const reduxStore = mockStore();
 
-  const addemployee = () => ({ type: "ADD_EMP" });
+  const updateemployee = () => ({ type: "UPDATE_EMP" });
 
   it("should dispatch action", () => {
-    // Initialize mockstore with empty state
+    
     const initialState = {};
     const store = mockStore(initialState);
 
-    // Dispatch the action
-    store.dispatch(addemployee());
+    
+    store.dispatch(updateemployee());
 
     const actions = store.getActions();
-    const expectedPayload = { type: "ADD_EMP" };
+    const expectedPayload = { type: "UPDATE_EMP" };
     expect(actions).toEqual([expectedPayload]);
   });
 });

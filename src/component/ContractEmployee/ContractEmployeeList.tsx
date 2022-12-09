@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import ContractEmployee from "./ContractEmployee";
 import { IContract, UserContextType } from "../Type/Employee.type";
 import { UserContext } from "../Context/EmployeeContext";
@@ -7,16 +7,27 @@ import Navbar from "../NavBar/Navbar";
 
 
 
+
+
+
 const ContractEmployeeList = () => {
   const { users } = React.useContext(UserContext) as UserContextType;
- 
+  const [userList, setUserList] = useState(users);
+    console.log(userList);
+
+    const deleteUser = (id: number) => {
+      const newList = userList.filter((l) => l.id !== id) 
+      setUserList(newList);
+  }
+
+
 
   return (
     <>
       <Navbar />
-      <div className="column">
+      {/* <div className="column">
         <div className="card-container">
-          {users.map((user: IContract) => {
+          {users.map((user: IContract) => { <ContractEmployee key={user.id} user={user} onRemove={deleteUser} />
             return (
               <div key={""}>
                 <div className="row">
@@ -34,17 +45,20 @@ const ContractEmployeeList = () => {
                       <div className="card-title">
                         {"Designation : " + user.designation}
                       </div>
+                      
                     </div>
-                    
+                    <input type="button" value="Update" className="back-btn" />
+                    <input type="button" value="Delete" className="back-btn" onClick={() => onRemove(user.id)}  />
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
 
 export default ContractEmployeeList;
+
