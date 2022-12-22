@@ -16,6 +16,7 @@ const AddEmployee = (props: Props) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [designation, setDesignation] = useState('');
+  
   let navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const AddEmployee = (props: Props) => {
   return (
     <>
    {/* <div className='employeepage'></div>  */}
-    <Navbar />
+    {/* <Navbar /> */}
     <div className="form-container">
       <div>
         <h3 className="heading"> Employee Form</h3>
@@ -94,89 +95,3 @@ export default AddEmployee;
 
 
 
-// <div className="container">
-// <div>
-//   <h3 style={{ textAlign: 'center' }}>Add Employee </h3>
-// </div>
-// <form onSubmit={onSubmitBtnClickHnd}>
-//   <div>
-//     <div style={{ float: 'left', width: '30%' }}>
-//       <label>First Name: </label>
-//     </div>
-//     <div style={{ float: 'left', width: '70%' }}>
-//       <input
-//         type="text"
-//         value={firstName}
-//         onChange={onFirstNameChangeHnd}
-//         pattern="[A-Za-z]+"
-//         required
-//         title="Must contain alphabets only, numbers not allowed"
-//       />
-//     </div>
-//   </div>
-//   <div>
-//     <div style={{ float: 'left', width: '30%' }}>
-//       <label>Last Name: </label>
-//     </div>
-//     <div style={{ float: 'left', width: '70%' }}>
-//       <input
-//         type="text"
-//         value={lastName}
-//         onChange={onLastNameChangeHnd}
-//         pattern="[A-Za-z]+"
-//         required
-//         title="Must contain alphabets only, numbers not allowed"
-//       />
-//     </div>
-//   </div>
-//   <div>
-//     <div style={{ float: 'left', width: '30%' }}>
-//       <label>Email: </label>
-//     </div>
-//     <div style={{ float: 'left', width: '60%' }}>
-//       <input
-//         type="text"
-//         value={email}
-//         onChange={onEmailChangeHnd}
-//         required
-//         pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-//         title="Must contain alphabets followed by @ and ."
-//       />
-//     </div>
-//   </div>
-//   <div>
-//     <div style={{ float: 'left', width: '30%' }}>
-//       <label>Designation: </label>
-//     </div>
-//     <div style={{ float: 'left', width: '60%' }}>
-//       <input
-//         type="text"
-//         value={designation}
-//         onChange={OnDesignationChangeHnd}
-//         required
-//         title="Must contain alphabets "
-//       />
-//     </div>
-//   </div>{' '}
-//   <br />
-//   <div className="button-container">
-//     <input
-//       type="button"
-//       className="card-button"
-//       value="Back"
-//       onClick={onBack}
-//     />
-//     <input
-//       type="submit"
-//       className="card-button"
-//       value="Permanant Employee"
-//     />
-//      <input
-//       type="submit"
-//       className="card-button"
-//       value="Contractual Employee"
-//     />
-//   </div>
-// </form>
-
-// </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { IContract, UserContextType } from "../Type/Employee.type";
 import { UserContext } from "../Context/EmployeeContext";
 import Navbar from "../NavBar/Navbar";
@@ -9,6 +9,8 @@ const AddContractEmployee = () => {
   const { saveUser } = React.useContext(UserContext) as UserContextType;
 
   const [userData, setUserData] = useState<IContract | {}>();
+
+  
 
   let navigate = useNavigate();
 
@@ -31,7 +33,7 @@ const AddContractEmployee = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="form">
         <div>

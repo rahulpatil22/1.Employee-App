@@ -10,10 +10,12 @@ import { EmpState } from '../redux/empReducer';
 import EditEmployee from '../EditEmployee/EditEmployee';
 import { url } from 'inspector';
 import Navbar from '../NavBar/Navbar';
-import background from '../employee.jpg';
+
 
 const Home = () => {
   const dispatch = useDispatch();
+
+  
 
   const employeeList = useSelector<
     EmpState,
@@ -63,7 +65,7 @@ const Home = () => {
     <div className="main">
     
       {/* <Header title="Dashbaord" /> */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Actual content */}
       <section className="section-content">
