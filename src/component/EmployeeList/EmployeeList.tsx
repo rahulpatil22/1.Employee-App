@@ -1,5 +1,5 @@
 import { IEmployee } from "../Type/Employee.type";
-import "./EmployeeList.style.css";
+// import "./EmployeeList.style.css";
 import React, { useState } from "react";
 import EmployeeModal from "../ModelEmployee/EmployeeModal";
 
@@ -45,16 +45,21 @@ const EmployeeList = (props: Props) => {
                   </div>
                   <div className="card-button-container">
                     <input
+                    aria-label="EditButton" 
+                    data-testid="ebtn"
                       type="button"
                       className="card-button "
                       value="Edit"
+                      id="editButton"
                       onClick={() => onEdit(employee)}
                     />
                     <input
+                     aria-label="DeleteButton" 
                       type="button"
                       value="Delete"
                       className="card-button "
-                      onClick={() => onDeleteClickHnd(employee)}
+                      id="deleteButton"
+                      onClick={() =>  onDeleteClickHnd(employee)}
                     />
                   </div>
                 </div>

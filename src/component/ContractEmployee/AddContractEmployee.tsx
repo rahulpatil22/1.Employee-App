@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { IContract, UserContextType } from "../Type/Employee.type";
 import { UserContext } from "../Context/EmployeeContext";
 import Navbar from "../NavBar/Navbar";
-import "../ContractEmployee/AddContractEmployee.style.css";
+// import "../ContractEmployee/AddContractEmployee.style.css";
 import { useNavigate } from "react-router-dom";
 
 const AddContractEmployee = () => {
   const { saveUser } = React.useContext(UserContext) as UserContextType;
 
   const [userData, setUserData] = useState<IContract | {}>();
+
+  
 
   let navigate = useNavigate();
 
@@ -31,13 +33,13 @@ const AddContractEmployee = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="form">
         <div>
           <h3 className="heading"> Employee Form</h3>
         </div>
-        <form onSubmit={(e) => handleSaveUser(e, userData)}>
+        <form aria-label="Employee" onSubmit={(e) => handleSaveUser(e, userData)}>
           <label htmlFor="fname">
             <b>First name :</b>{" "}
           </label>
@@ -48,6 +50,7 @@ const AddContractEmployee = () => {
             required
             pattern={"[A-Za-z]+"}
             title="Must contain alphabets only, numbers not allowed"
+            aria-label="first name"
           />
 
           <label htmlFor="lname">

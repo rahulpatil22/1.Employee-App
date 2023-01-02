@@ -13,7 +13,7 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
         //     designation: "Developer",
         // },
     ]);
-
+ let myBlogs
     const saveUser = (user: IContract) => {
         const newUser: IContract = {
             id: Math.random(),
@@ -22,9 +22,18 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
             email: user.email,
             designation: user.designation,
         }
+        myBlogs=newUser;
 
-        setUsers([...users, newUser]);
+        var retrieveData = localStorage.getItem("storage");
+        var contractemployeelist = JSON.parse(retrieveData || "");
+        // setUsers([...users, newUser]);
+        localStorage.setItem('storage',JSON.stringify([...contractemployeelist,myBlogs]));
     }
+    // const setUsers =(user:IContract []) =>{
+    //     setUserLis(user)
+    //     window.localStorage.setItem("ContractEmployeelist",JSON.stringify(user))
+    //   }
+      
 
     return (
         <UserContext.Provider value={{users, saveUser}}>{children}</UserContext.Provider>

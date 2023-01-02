@@ -13,6 +13,7 @@ import { IEmployee } from "./component/Type/Employee.type";
 import AddContractEmployee from "./component/ContractEmployee/AddContractEmployee";
 import { UserProvider } from "./component/Context/EmployeeContext";
 import ContractEmployeeList from "./component/ContractEmployee/ContractEmployeeList";
+import Navbar from "./component/NavBar/Navbar";
 
 
 const root = ReactDOM.createRoot(
@@ -28,6 +29,7 @@ root.render(
    <UserProvider>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
+      <Navbar/>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
