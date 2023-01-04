@@ -11,7 +11,7 @@ type Props = {
   onSubmitClickHnd: (data: IEmployee) => void;
 };
 
-const AddEmployee = () => {
+const AddEmployee = (props:Props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const AddEmployee = () => {
 
   const dispatch = useDispatch();
 
-  // const { onBackBtnClickHnd, onSubmitClickHnd } = props;
+  const { onBackBtnClickHnd, onSubmitClickHnd } = props;
 
   const onFirstNameChangeHnd = (e: any) => {
     setFirstName(e.target.value);

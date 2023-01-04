@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render, screen,fireEvent } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, Form, MemoryRouter } from 'react-router-dom';
 import AddEmployee from './AddEmployee'; 
 
 import { Provider } from 'react-redux';
@@ -97,6 +97,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 // });
 import configureStore from 'redux-mock-store'
+import { IEmployee } from '../Type/Employee.type';
 
 
 describe('add user redux', () => {
@@ -122,21 +123,18 @@ it('should dispatch action', () => {
 })
 });
 
-// test('if onBackbtnClickHand name prop is passed,render the prop',()=>{
-//   const onBackBtnClickHnd=jest.fn();
-// render( <BrowserRouter>
-// <AddEmployee onBackBtnClickHnd='' />
-// </BrowserRouter>);
-// userEvent.click( screen.getByRole('button', { name:''}))
-// expect(screen.getByText(/onBack/i)).toBeIntheDocument();
-// })
+
 
 test("should call back button",  async () => {
   const employeeFunction = jest.fn();
   let list;
  
   const { container } = render(
-    <Provider store={store}><BrowserRouter><AddEmployee /></BrowserRouter></Provider>
+    <Provider store={store}><BrowserRouter><AddEmployee onBackBtnClickHnd={function (): void {
+      throw new Error('Function not implemented.');
+    } } onSubmitClickHnd={function (data: IEmployee): void {
+      throw new Error('Function not implemented.');
+    } } /></BrowserRouter></Provider>
   );
  const deleteButton=await screen.getByText("Submit")
   fireEvent.click(deleteButton);
@@ -144,3 +142,4 @@ test("should call back button",  async () => {
   expect(employeeFunction).toHaveBeenCalled()
   
 });
+
